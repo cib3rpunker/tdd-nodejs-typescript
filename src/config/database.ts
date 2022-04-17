@@ -4,6 +4,7 @@ import { Sequelize } from 'sequelize';
 const sequelize = new Sequelize('hoaxify', 'my-db-user', 'hahahaha', {
   dialect: 'sqlite',
   storage: './database.sqlite',
+  logging: false,
 });
 
 // const sequelize = new Sequelize('hoaxify', 'postgres', 'hahahaha', {
