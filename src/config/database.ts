@@ -8,13 +8,14 @@ import { config as dbConfig } from 'node-config-ts';
 //.get('database');
 
 const sequelize = new Sequelize(
-  dbConfig.sqlite.database,
-  dbConfig.sqlite.username,
-  dbConfig.sqlite.password,
+  dbConfig.database,
+  dbConfig.username,
+  dbConfig.password,
   {
-    dialect: dbConfig.sqlite.dialect,
-    storage: dbConfig.sqlite.storage,
-    logging: dbConfig.sqlite.logging,
+    // dialect: dbConfig.dialect,
+    dialect: 'sqlite',
+    storage: dbConfig.storage,
+    logging: dbConfig.logging,
   }
 );
 

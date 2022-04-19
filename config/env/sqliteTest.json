@@ -3,6 +3,6 @@
   "username": "my-db-user",
   "password": "hahahaha",
   "dialect": "sqlite",
-  "storage": "./sqlite_dev.sqlite",
+  "storage": "./sqlite_test.sqlite",
   "logging": false
 }
