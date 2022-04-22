@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.ts",
   "scripts": {
-    "postinstall": "node-config-ts",
-    "start0": "cross-env NODE_ENV=development ts-node index.ts",
+    "start0": "cross-env NODE_ENV=sqliteDev ts-node src/index.ts",
     "start": "cross-env NODE_ENV=sqliteDev nodemon src/index.ts",
-    "test": "cross-env NODE_ENV=sqliteTest jest --watch",
-    "test0": "jest"
+    "start1": "ts-node-dev src/index.ts",
+    "test0": "cross-env NODE_ENV=SQLITE_TEST jest --watch",
+    "test": "jest"
   },
   "keywords": [],
   "author": "",
@@ -26,8 +26,8 @@
     "bcrypt": "^5.0.1",
     "config": "^3.3.7",
     "cross-env": "^7.0.3",
+    "dotenv": "^16.0.0",
     "jest": "^27.5.1",
-    "node-config-ts": "^3.1.0",
     "nodemon": "^2.0.15",
     "pg": "^8.7.3",
     "pg-hstore": "^2.3.4",
@@ -36,6 +36,7 @@
     "supertest": "^6.2.2",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
+    "ts-node-dev": "^1.1.8",
     "typescript": "^4.6.3"
   }
 }

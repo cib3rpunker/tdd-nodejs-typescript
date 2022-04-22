@@ -1,34 +1,20 @@
-// const Sequelize = require('sequelize');
 import { Sequelize } from 'sequelize';
-// import config from 'config';
-import { config as dbConfig } from 'node-config-ts';
+import { Dialect } from 'sequelize/types';
 
-// const dbConfig = config.get('database');
-// const dbConfig = config.;
-//.get('database');
+// import config from 'config';
+// import {config} from 'node-config-ts'
+import config from '../config'
+
 
 const sequelize = new Sequelize(
-  dbConfig.database,
-  dbConfig.username,
-  dbConfig.password,
+  config.sqlite.database,
+  config.sqlite.username,
+  config.sqlite.password,
   {
-    // dialect: dbConfig.dialect,
-    dialect: 'sqlite',
-    storage: dbConfig.storage,
-    logging: dbConfig.logging,
+    dialect: config.sqlite.dialect as Dialect,
+    storage: config.sqlite.storage,
+    logging: config.sqlite.logging,
   }
 );
 
-// const sequelize = new Sequelize('hoaxify', 'my-db-user', 'hahahaha', {
-//   dialect: 'sqlite',
-//   storage: './database.sqlite',
-//   logging: false,
-// });
-
-// const sequelize = new Sequelize('hoaxify', 'postgres', 'hahahaha', {
-//   dialect: 'postgres',
-//   storage: './database.sqlite',
-// });
-
 export default sequelize;
-// module.exports = sequelize;

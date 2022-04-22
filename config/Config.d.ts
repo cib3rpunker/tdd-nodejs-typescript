@@ -1,5 +1,7 @@
 /* tslint:disable */
 /* eslint-disable */
+// TODO: DELETE THIS FILE.
+// -  node-config-ts package was deleted, this file was related of that dependency.
 declare module "node-config-ts" {
   interface IConfig {
     database: string
