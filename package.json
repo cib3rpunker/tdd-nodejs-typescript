@@ -2,11 +2,11 @@
   "name": "express-tdd",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "src/index.ts",
   "scripts": {
-    "start0": "cross-env NODE_ENV=sqliteDev ts-node src/index.ts",
-    "start": "cross-env NODE_ENV=sqliteDev nodemon src/index.ts",
-    "start1": "ts-node-dev src/index.ts",
+    "start0": "cross-env NODE_ENV=SQLITE_DEV ts-node src/index.ts",
+    "start1": "cross-env NODE_ENV=SQLITE_DEV nodemon src/index.ts",
+    "start": "cross-env NODE_ENV=SQLITE_DEV ts-node-dev src/index.ts",
     "test0": "cross-env NODE_ENV=SQLITE_TEST jest --watch",
     "test": "jest"
   },
@@ -37,6 +37,7 @@
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
     "ts-node-dev": "^1.1.8",
+    "tsconfig-paths": "^3.14.1",
     "typescript": "^4.6.3"
   }
 }

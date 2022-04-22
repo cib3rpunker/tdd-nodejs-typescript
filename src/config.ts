@@ -25,20 +25,25 @@ dotenv.config();
 // 	SQLITE_LOGGING
 // } = process.env;
 
+const PORT = process.env.PORT || 8080
+const NODE_ENV = process.env.NODE_ENV || 'development';
 const SQLITE_DATABASE = process.env.SQLITE_DATABASE as string;
 const SQLITE_USERNAME = process.env.SQLITE_USERNAME as string;
 const SQLITE_PASSWORD = process.env.SQLITE_PASSWORD as string;
 const SQLITE_DIALECT = process.env.SQLITE_DIALECT;
-const SQLITE_STORAGE = process.env.SQLITE_STORAGE as string;
+const SQLITE_DEV_STORAGE = process.env.SQLITE_DEV_STORAGE as string;
+const SQLITE_TEST_STORAGE = process.env.SQLITE_TEST_STORAGE as string;
 const SQLITE_LOGGING: boolean = process.env.SQLITE_LOGGING === 'true';
-
+const SQLITE_DEV_ENV = process.env.SQLITE_DEV_ENV as string;
+const SQLITE_TEST_ENV = process.env.SQLITE_TEST_ENV as string;
 // const sqlEncrypt = process.env.SQL_ENCRYPT === 'true';
 
 // assert( PORT, 'PORT is required' );
 // assert( HOST, 'HOST is required' );
 
 const config = {
-	// port: PORT,
+	NODE_ENV: NODE_ENV,
+	port: PORT,
 	// host: HOST,
 	// url: HOST_URL,
 	// cookiePwd: COOKIE_ENCRYPT_PWD,
@@ -57,8 +62,11 @@ const config = {
 		username: SQLITE_USERNAME,
 		password: SQLITE_PASSWORD,
 		dialect: SQLITE_DIALECT,
-		storage: SQLITE_STORAGE,
-		logging: SQLITE_LOGGING
+		dev_storage: SQLITE_DEV_STORAGE,
+		test_storage: SQLITE_TEST_STORAGE,
+		logging: SQLITE_LOGGING,
+		dev_env: SQLITE_DEV_ENV,
+		test_env: SQLITE_TEST_ENV
 		// ,
 		// options: {
 		// 	encrypt: sqlEncrypt,
