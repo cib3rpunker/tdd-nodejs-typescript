@@ -25,7 +25,7 @@ dotenv.config();
 // 	SQLITE_LOGGING
 // } = process.env;
 
-const PORT = process.env.PORT || 8080
+const PORT = process.env.PORT || 8080;
 const NODE_ENV = process.env.NODE_ENV || 'development';
 const SQLITE_DATABASE = process.env.SQLITE_DATABASE as string;
 const SQLITE_USERNAME = process.env.SQLITE_USERNAME as string;
