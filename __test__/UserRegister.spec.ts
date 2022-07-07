@@ -76,34 +76,6 @@ describe( 'User Registration', () => {
 		expect( body.validationErrors ).not.toBeUndefined()
 	} )
 
-	it( `returns "🔴 Please enter a valid username" when username is empty. Typescript protects against null or undefined values`, async () => {
-		const response = await postUser( {
-			username: '',
-			email: 'user1@test.com',
-			password: 'P4ssword'
-		} )
-
-		const body = response.body
-		expect( body.validationErrors.username ).toBe(
-			// '🔴 Please enter a valid username.'
-			'🔴 Username cannot be null'
-		)
-	} )
-
-	it( `returns "🔴 Please enter a valid email" when email is empty. Typescript protects against null or undefined values`, async () => {
-		const response = await postUser( {
-			username: 'user1',
-			email: '',
-			password: 'P4ssword'
-		} )
-
-		const body = response.body
-		expect( body.validationErrors.email ).toBe(
-			// '🔴 Please enter a valid email'
-			'🔴 Email cannot be null'
-		)
-	} )
-
 	it( `returns "🔴 Please enter a valid username/email" when both are invalid. Typescript protects against null or undefined values`, async () => {
 		const response = await postUser( {
 			username: '',
@@ -115,4 +87,39 @@ describe( 'User Registration', () => {
 
 		expect( Object.keys( body.validationErrors ) ).toEqual( ['username', 'email'] )
 	} )
+
+	// it.each( [
+	// 	['username', '🔴 Please enter a valid username'],
+	// 	['email', '🔴 Please enter a valid email'],
+	// 	['password', '🔴 Password cannot be empty'],
+	// ]
+	// )( 'when %s is invalid returns "%s"', async ( field, expectedMessage ) => {
+	// 	const user = {
+	// 		username: 'user1',
+	// 		email: 'user1@test.com',
+	// 		password: 'P4ssword'
+	// 	}
+	// 	user[field] = ''
+	// 	const response = await postUser( user )
+	// 	const body = response.body
+	// 	expect( body.validationErrors[field] ).toBe( expectedMessage )
+	// } )
+
+	it.each`
+	field 		  | expectedMessage
+	${'username'} | ${'🔴 Please enter a valid username'}
+	${'email'} 	  | ${'🔴 Please enter a valid email'}
+	${'password'} | ${'🔴 Password cannot be empty'}
+	`( 'when $field is invalid returns "$expectedMessage"', async ( { field, expectedMessage } ) => {
+		const user = {
+			username: 'user1',
+			email: 'user1@test.com',
+			password: 'P4ssword'
+		}
+		user[field] = ''
+		const response = await postUser( user )
+		const body = response.body
+		expect( body.validationErrors[field] ).toBe( expectedMessage )
+	} )
+
 } )

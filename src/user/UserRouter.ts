@@ -7,8 +7,9 @@ const router = express.Router();
 // Promise returned in function argument where a void return was expected. eslint@typescript-eslint/no-misused-promises
 router.post(
 	'/api/1.0/users',
-	check( 'username' ).notEmpty().withMessage('🔴 Username cannot be null'),
-	check( 'email' ).notEmpty().withMessage('🔴 Email cannot be null'),
+	check( 'username' ).notEmpty().withMessage('🔴 Please enter a valid username'),
+	check( 'email' ).notEmpty().withMessage('🔴 Please enter a valid email'),
+	check( 'password' ).notEmpty().withMessage('🔴 Password cannot be empty'),
 	async ( req, res, next ) => {
 		const errors = validationResult( req )
 		if ( !errors.isEmpty() ) {
