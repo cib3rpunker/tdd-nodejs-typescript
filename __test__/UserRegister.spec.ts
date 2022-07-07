@@ -85,7 +85,8 @@ describe('User Registration', () => {
 
     const body = response.body;
     expect(body.validationErrors.username).toBe(
-      '🔴 Please enter a valid username.'
+      // '🔴 Please enter a valid username.'
+      '🔴 Username cannot be null'
     );
   });
 
@@ -97,7 +98,10 @@ describe('User Registration', () => {
     });
 
     const body = response.body;
-    expect(body.validationErrors.email).toBe('🔴 Please enter a valid email.');
+		expect( body.validationErrors.email ).toBe(
+			// '🔴 Please enter a valid email'
+			'🔴 Email cannot be null'
+		);
   });
 
   it(`returns "🔴 Please enter a valid username/email" when both are invalid. Typescript protects against null or undefined values`, async () => {
